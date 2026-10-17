@@ -1,0 +1,90 @@
+﻿@model CarniceriaGuanacaste.Models.Cliente
+
+@{
+    ViewData["Title"] = "Actualizar Cliente";
+}
+
+<div class="container mt-4">
+    <h2>Actualizar Cliente</h2>
+    <hr />
+
+    <div class="row">
+        <div class="col-md-8">
+            <form asp-action="Actualizar" method="post" class="needs-validation">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <input type="hidden" asp-for="Id" />
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label asp-for="TipoIdentificacion" class="form-label">Tipo de Identificación</label>
+                        <select asp-for="TipoIdentificacion" class="form-select">
+                            <option value="">-- Seleccione --</option>
+                            <option value="Cédula Nacional">Cédula Nacional</option>
+                            <option value="DIMEX">DIMEX</option>
+                            <option value="Pasaporte">Pasaporte</option>
+                        </select>
+                        <span asp-validation-for="TipoIdentificacion" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Identificacion" class="form-label">Número de Identificación</label>
+                        <input asp-for="Identificacion" class="form-control" />
+                        <span asp-validation-for="Identificacion" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <label asp-for="Nombre" class="form-label">Nombre</label>
+                        <input asp-for="Nombre" class="form-control" />
+                        <span asp-validation-for="Nombre" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-4">
+                        <label asp-for="PrimerApellido" class="form-label">Primer Apellido</label>
+                        <input asp-for="PrimerApellido" class="form-control" />
+                        <span asp-validation-for="PrimerApellido" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-4">
+                        <label asp-for="SegundoApellido" class="form-label">Segundo Apellido</label>
+                        <input asp-for="SegundoApellido" class="form-control" />
+                        <span asp-validation-for="SegundoApellido" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label asp-for="FechaNacimiento" class="form-label">Fecha de Nacimiento</label>
+                        <input asp-for="FechaNacimiento" type="date" class="form-control" />
+                        <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Telefono" class="form-label">Teléfono</label>
+                        <input asp-for="Telefono" class="form-control" />
+                        <span asp-validation-for="Telefono" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Correo" class="form-label">Correo Electrónico</label>
+                    <input asp-for="Correo" type="email" class="form-control" />
+                    <span asp-validation-for="Correo" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Direccion" class="form-label">Dirección</label>
+                    <textarea asp-for="Direccion" class="form-control" rows="3"></textarea>
+                    <span asp-validation-for="Direccion" class="text-danger"></span>
+                </div>
+
+                <div class="mt-4">
+                    <button type="submit" class="btn btn-warning">Guardar Cambios</button>
+                    <a asp-action="Index" class="btn btn-secondary ms-2">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

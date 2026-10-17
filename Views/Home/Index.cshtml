@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Página Principal";
+}
+
+<div class="text-center mt-5">
+    <h1 class="display-4 fw-bold">Carnicería Guanacaste</h1>
+    <p class="lead text-muted mt-3">Bienvenido.</p>
+
+    <hr class="my-4 w-50 mx-auto" />
+
+    <p class="mb-4">Seleccione una de las opciones del menú superior para comenzar a administrar el sistema:</p>
+
+    <div class="d-flex justify-content-center gap-3 flex-wrap">
+        <a asp-controller="Empleados" asp-action="Index" class="btn btn-primary btn-lg">Gestión de Empleados</a>
+        <a asp-controller="Clientes" asp-action="Index" class="btn btn-success btn-lg">Gestión de Clientes</a>
+        <a asp-controller="Productos" asp-action="Index" class="btn btn-warning btn-lg">Gestión de Productos</a>
+        <a asp-controller="Proveedores" asp-action="Index" class="btn btn-info text-white btn-lg">Gestión de Proveedores</a>
+    </div>
+</div>

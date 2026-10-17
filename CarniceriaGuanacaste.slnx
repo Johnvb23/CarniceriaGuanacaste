@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="../CarniceriaGuanacaste.Models/CarniceriaGuanacaste.Models.csproj" />
+  <Project Path="../CarniceriaGuanacaste.Web/CarniceriaGuanacaste.Web.csproj" />
+  <Project Path="CarniceriaGuanacaste.csproj" />
+</Solution>

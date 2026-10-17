@@ -1,0 +1,61 @@
+﻿@model CarniceriaGuanacaste.Models.Cliente
+
+@{
+    ViewData["Title"] = "Buscar Cliente";
+}
+
+<div class="container mt-4">
+    <h2>Buscar Cliente</h2>
+    <hr />
+
+    <form asp-action="Buscar" method="get" class="row g-3 mb-4">
+        <div class="col-md-6">
+            <label for="identificacion" class="form-label">Número de Identificación</label>
+            <input type="text" id="identificacion" name="identificacion" class="form-control" value="@Context.Request.Query["identificacion"]" placeholder="Ingrese la identificación a buscar" />
+        </div>
+        <div class="col-md-12 align-self-end">
+            <button type="submit" class="btn btn-primary">Buscar</button>
+            <a asp-action="Index" class="btn btn-secondary ms-2">Volver al Listado</a>
+        </div>
+    </form>
+
+    @if (ViewBag.Mensaje != null)
+    {
+        <div class="alert alert-warning" role="alert">
+            @ViewBag.Mensaje
+        </div>
+    }
+
+    @if (Model != null)
+    {
+        <div class="card shadow-sm mt-4">
+            <div class="card-header bg-dark text-white">
+                Resultado de la Búsqueda
+            </div>
+            <div class="card-body">
+                <dl class="row">
+                    <dt class="col-sm-3">Tipo de Identificación:</dt>
+                    <dd class="col-sm-9">@Model.TipoIdentificacion</dd>
+
+                    <dt class="col-sm-3">Identificación:</dt>
+                    <dd class="col-sm-9">@Model.Identificacion</dd>
+
+                    <dt class="col-sm-3">Nombre Completo:</dt>
+                    <dd class="col-sm-9">@Model.Nombre @Model.PrimerApellido @Model.SegundoApellido</dd>
+
+                    <dt class="col-sm-3">Fecha de Nacimiento:</dt>
+                    <dd class="col-sm-9">@Model.FechaNacimiento.ToString("yyyy-MM-dd")</dd>
+
+                    <dt class="col-sm-3">Teléfono:</dt>
+                    <dd class="col-sm-9">@Model.Telefono</dd>
+
+                    <dt class="col-sm-3">Correo Electrónico:</dt>
+                    <dd class="col-sm-9">@Model.Correo</dd>
+
+                    <dt class="col-sm-3">Dirección:</dt>
+                    <dd class="col-sm-9">@Model.Direccion</dd>
+                </dl>
+            </div>
+        </div>
+    }
+</div>

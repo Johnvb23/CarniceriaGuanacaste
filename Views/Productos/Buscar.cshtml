@@ -1,0 +1,58 @@
+﻿@model CarniceriaGuanacaste.Models.Producto
+
+@{
+    ViewData["Title"] = "Buscar Producto";
+}
+
+<div class="container mt-4">
+    <h2>Buscar Producto</h2>
+    <hr />
+
+    <form asp-action="Buscar" method="get" class="row g-3 mb-4">
+        <div class="col-md-6">
+            <label for="codigo" class="form-label">Código del Producto</label>
+            <input type="text" id="codigo" name="codigo" class="form-control" value="@Context.Request.Query["codigo"]" placeholder="Ingrese el código del producto" />
+        </div>
+        <div class="col-md-12 align-self-end">
+            <button type="submit" class="btn btn-primary">Buscar</button>
+            <a asp-action="Index" class="btn btn-secondary ms-2">Volver al Listado</a>
+        </div>
+    </form>
+
+    @if (ViewBag.Mensaje != null)
+    {
+        <div class="alert alert-warning" role="alert">
+            @ViewBag.Mensaje
+        </div>
+    }
+
+    @if (Model != null)
+    {
+        <div class="card shadow-sm mt-4">
+            <div class="card-header bg-dark text-white">
+                Resultado de la Búsqueda
+            </div>
+            <div class="card-body">
+                <dl class="row">
+                    <dt class="col-sm-3">Código:</dt>
+                    <dd class="col-sm-9">@Model.Codigo</dd>
+
+                    <dt class="col-sm-3">Nombre:</dt>
+                    <dd class="col-sm-9">@Model.Nombre</dd>
+
+                    <dt class="col-sm-3">Categoría:</dt>
+                    <dd class="col-sm-9">@Model.Categoria</dd>
+
+                    <dt class="col-sm-3">Descripción:</dt>
+                    <dd class="col-sm-9">@Model.Descripcion</dd>
+
+                    <dt class="col-sm-3">Precio Unitario:</dt>
+                    <dd class="col-sm-9">₡@Model.Precio.ToString("N2")</dd>
+
+                    <dt class="col-sm-3">Cantidad en Stock:</dt>
+                    <dd class="col-sm-9">@Model.Stock</dd>
+                </dl>
+            </div>
+        </div>
+    }
+</div>

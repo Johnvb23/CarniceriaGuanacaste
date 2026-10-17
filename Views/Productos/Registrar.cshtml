@@ -1,0 +1,73 @@
+﻿@model CarniceriaGuanacaste.Models.Producto
+
+@{
+    ViewData["Title"] = "Registrar Producto";
+}
+
+<div class="container mt-4">
+    <h2>Registrar Producto</h2>
+    <hr />
+
+    <div class="row">
+        <div class="col-md-8">
+            <form asp-action="Registrar" method="post" class="needs-validation">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label asp-for="Codigo" class="form-label"></label>
+                        <input asp-for="Codigo" class="form-control" placeholder="Ej: PROD-001" />
+                        <span asp-validation-for="Codigo" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Categoria" class="form-label"></label>
+                        <select asp-for="Categoria" class="form-select">
+                            <option value="">-- Seleccione una Categoría --</option>
+                            <option value="Res">Res</option>
+                            <option value="Cerdo">Cerdo</option>
+                            <option value="Pollo">Pollo</option>
+                            <option value="Embutidos">Embutidos</option>
+                            <option value="Mariscos">Mariscos</option>
+                            <option value="Otros">Otros</option>
+                        </select>
+                        <span asp-validation-for="Categoria" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Nombre" class="form-label"></label>
+                    <input asp-for="Nombre" class="form-control" placeholder="Ej: Lomo de Res" />
+                    <span asp-validation-for="Nombre" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Descripcion" class="form-label"></label>
+                    <textarea asp-for="Descripcion" class="form-control" rows="3" placeholder="Detalles o especificaciones del corte/producto"></textarea>
+                    <span asp-validation-for="Descripcion" class="text-danger"></span>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label asp-for="Precio" class="form-label"></label>
+                        <input asp-for="Precio" type="number" step="0.01" class="form-control" placeholder="0.00" />
+                        <span asp-validation-for="Precio" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Stock" class="form-label"></label>
+                        <input asp-for="Stock" type="number" class="form-control" placeholder="0" />
+                        <span asp-validation-for="Stock" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    <button type="submit" class="btn btn-success">Guardar Producto</button>
+                    <a asp-action="Index" class="btn btn-secondary ms-2">Volver a la Lista</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
